@@ -1,0 +1,22 @@
+.app-header{
+    display: flex;
+    width: 100%;
+    >*{
+        display: flex;
+        align-items: center;
+
+    }
+    .logo{
+        width: 33%;
+        img{
+            width: 30%;
+            height: auto;
+        }
+    }
+    nav{
+        width: 33%;
+        >*{
+            margin-right: 15px;
+        }
+    }
+}

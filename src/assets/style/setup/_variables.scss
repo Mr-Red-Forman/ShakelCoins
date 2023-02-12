@@ -1,0 +1,33 @@
+// Colors
+$clr1: #ce2e6c;
+$clr2: #4f3a65;
+$clr3: #574f7d;
+$clr4: #95adbe;
+$clr5: #dff0ea;
+$clr6: #fff;
+$clr7: #222;
+
+$white: #FFFFFF;
+
+
+$welcome-bgc:#014E56;
+$intro-bgc:#012F34;
+$experience-bgc:#004047;
+$contact-us-bgc:#F67E7E;
+$footer-bgc:#002529;
+$line-center-content-welcome:#79C8C7;
+
+
+$layoutPadding-small: 24px;
+$layoutPadding-wide: 165px;
+
+
+// Breakpoints
+$break-narrow: 500px;
+$break-normal: 1110px;
+$break-wide: 1920px;
+
+
+$padded-break-narrow: $break-narrow + $layoutPadding-small * 2;
+$padded-break-normal: $break-normal + $layoutPadding-wide * 2;
+$padded-break-wide: $break-wide + $layoutPadding-wide* 2;
