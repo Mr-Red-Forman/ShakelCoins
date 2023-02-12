@@ -2,7 +2,9 @@
 import AppHeader from '@/cmps/app-header.vue'
 import AppIndex from '@/pages/app-index.vue'
 import AppFooter from '@/cmps/app-footer.vue'
+
 import {shakelService} from '@/services/shakelService.js'
+
 export default {
   components: {
     AppIndex,

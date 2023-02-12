@@ -11,7 +11,13 @@
         </nav>
         <div class="user-logged">
             <button v-if='!user' title="Add User" @:click="addUser">+</button>
-            <h3 v-if='user' title="">Hi {{user.name}}</h3>
+            <div class="user-details" v-if='user'>
+                <h3 title="user.name">Hi {{user.name}}</h3>
+                <h6 title="user.name">You have {{user.balance}} to spend</h6>
+
+
+            </div>
+
         </div>
     </header>
 </template>
@@ -27,6 +33,9 @@ export default {
         return {
             user: null
         }
+    },
+    created() {
+        this.user=userService.loggedInUser()
     },
     methods: {
         addUser(){

@@ -16,7 +16,6 @@ export const shakelService = {
 async function getRate() {
     try {
         let res = storageService.load(rate_curr)
-        console.log('res:', res)
         if (res) return res
         res = await axios({
             method: 'get',
