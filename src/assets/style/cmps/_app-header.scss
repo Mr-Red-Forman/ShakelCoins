@@ -4,7 +4,7 @@
     >*{
         display: flex;
         align-items: center;
-
+        width: 33%;
     }
     .logo{
         width: 33%;
@@ -14,9 +14,12 @@
         }
     }
     nav{
-        width: 33%;
+        
         >*{
             margin-right: 15px;
         }
+    }
+    .user-logged{
+        justify-content: end;
     }
 }
