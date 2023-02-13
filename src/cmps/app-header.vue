@@ -7,15 +7,14 @@
         </div>
         <nav>
             <RouterLink to="/">Home</RouterLink>
-            <!-- <RouterLink to="/about">About</RouterLink> -->
+            <RouterLink to="/contacts">Contacts</RouterLink>
         </nav>
         <div class="user-logged">
             <button v-if='!user' title="Add User" @:click="addUser">+</button>
             <div class="user-details" v-if='user'>
                 <h3 title="user.name">Hi {{user.name}}</h3>
                 <h6 title="user.name">You have {{user.balance}} to spend</h6>
-
-
+                <button @:click="logout">Logout</button>
             </div>
 
         </div>
@@ -40,6 +39,9 @@ export default {
     methods: {
         addUser(){
             this.user = userService.getUser()
+        },
+        logout(){
+            this.user=userService.logoutUser()
         }
     },
     components: {

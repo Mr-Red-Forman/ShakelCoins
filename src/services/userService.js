@@ -7,7 +7,8 @@ const logged_user='LOGGED_USER';
 
 export const userService = {
     getUser,
-    loggedInUser
+    loggedInUser,
+    logoutUser
 
 }
 
@@ -24,4 +25,9 @@ function getUser() {
 
 function loggedInUser() {
     return storageService.load(logged_user)
+}
+
+function logoutUser() {
+    storageService.save(logged_user,null)
+    return null
 }

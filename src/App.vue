@@ -29,7 +29,7 @@ export default {
   <div class="index-layout">
     <AppHeader />
     <main>
-      <AppIndex />
+      <RouterView />
     </main>
     <AppFooter />
     <h3>
