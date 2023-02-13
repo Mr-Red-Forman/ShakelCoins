@@ -3,7 +3,7 @@ import AppHeader from '@/cmps/app-header.vue'
 import AppIndex from '@/pages/app-index.vue'
 import AppFooter from '@/cmps/app-footer.vue'
 
-import {shakelService} from '@/services/shakelService.js'
+import {shakelService} from '@/services/shakel.service.js'
 import UserMsg from '@/cmps/user-msg.vue'
 
 
@@ -21,7 +21,7 @@ export default {
     }
   },
   async created() {
-    this.curr=await shakelService.getRate()
+    // this.curr=await shakelService.getRate()
   }
   
 }
@@ -36,11 +36,6 @@ export default {
     </main>
     <AppFooter />
     <UserMsg />
-
-    
-    
-
-
   </div>
 </template>
 

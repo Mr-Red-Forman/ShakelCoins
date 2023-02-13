@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import {contactService} from '@/services/contactService.js';
+import {contactService} from '@/services/contact.service.js';
 import { eventBus } from '@/services/eventBus.service.js'
 
 export default {

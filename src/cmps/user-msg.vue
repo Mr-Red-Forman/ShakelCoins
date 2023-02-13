@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         showMsg(msg) {
-            console.log(msg)
+            // console.log(msg)
             this.msg = msg
             setTimeout(() => (this.msg = null), msg.timeout || 1500)
         },

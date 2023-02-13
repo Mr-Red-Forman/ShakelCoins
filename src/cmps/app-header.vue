@@ -10,7 +10,9 @@
             <RouterLink to="/contacts">Contacts</RouterLink>
         </nav>
         <div class="user-logged">
-            <button v-if='!user' title="Add User" @:click="addUser">+</button>
+            <button v-if='!user' title="Add User" @:click="addUser">
+                 <v-icon name="hi-solid-user-add" />
+            </button>
             <div class="user-details" v-if='user'>
                 <h3 title="user.name">Hi {{user.name}}</h3>
                 <h6 title="user.name">You have {{user.balance}} to spend</h6>
@@ -24,7 +26,7 @@
 <script>
 import { RouterLink } from 'vue-router'
 import {userService} from '../services/userService.js'
-
+import {OhVueIcon} from "oh-vue-icons";
 
 
 export default {
@@ -45,6 +47,8 @@ export default {
         }
     },
     components: {
+        "v-icon": OhVueIcon
+        
     }
 }
 

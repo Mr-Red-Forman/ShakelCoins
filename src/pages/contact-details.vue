@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { contactService } from '@/services/contactService.js';
+import { contactService } from '@/services/contact.service.js';
 
 export default {
     data() {
