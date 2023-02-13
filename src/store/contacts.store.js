@@ -2,7 +2,7 @@ import { contactService } from '@/services/contact.service.js';
 import { showErrorMsg, showSuccessMsg } from '../services/eventBus.service.js'
 
 export const contactStore = {
-    strict: true,
+    // strict: true,
     state: {
         contacts: null,
         contact:null,

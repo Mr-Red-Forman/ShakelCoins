@@ -1,6 +1,7 @@
 // import Vue from 'vue';
 import Vuex from 'vuex';
-import {contactStore} from './contacts.store.js'
+import { contactStore } from './contacts.store.js'
+import { userStore } from './user.store.js'
 
 export const store = Vuex.createStore({
     strict: true,
@@ -18,6 +19,7 @@ export const store = Vuex.createStore({
     },
     modules: {
         contactStore,
+        userStore
     }
 })
 
