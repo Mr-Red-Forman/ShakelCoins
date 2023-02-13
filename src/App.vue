@@ -4,12 +4,15 @@ import AppIndex from '@/pages/app-index.vue'
 import AppFooter from '@/cmps/app-footer.vue'
 
 import {shakelService} from '@/services/shakelService.js'
+import UserMsg from '@/cmps/user-msg.vue'
+
 
 export default {
   components: {
     AppIndex,
     AppHeader,
-    AppFooter
+    AppFooter,
+    UserMsg
   },
 
   data() {
@@ -32,8 +35,8 @@ export default {
       <RouterView />
     </main>
     <AppFooter />
-    <h3>
-    </h3>
+    <UserMsg />
+
     
     
 

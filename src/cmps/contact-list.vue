@@ -1,6 +1,6 @@
 <template>
     <section class="contact-list">
-        <TransitionGroup name="list" tag="ul" class="contact-list">
+        <!-- <TransitionGroup name="list" tag="ul" class="contact-list"> -->
             <li class="contact-preview" v-for="contact in contacts" :key="contact._id">
                 <ContactPreview :contact="contact"/>
                 <section class="contact-actions">
@@ -14,7 +14,7 @@
                 </section>
             </li>
 
-        </TransitionGroup>
+        <!-- </TransitionGroup> -->
 
     </section>
 </template>

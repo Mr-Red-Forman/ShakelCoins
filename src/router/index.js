@@ -22,7 +22,7 @@ const routerOption={
       component: ContactDetails
     },
     {
-      path: '/contacts/edit/:_id',
+      path: '/contacts/edit/:_id?',
       component: ContactEdit
     },
 

@@ -14,6 +14,7 @@ import { eventBus } from '@/services/eventBus.service.js'
 import ContactList from '.././cmps/contact-list.vue'
 import ContactFilter from '.././cmps/contact-filter.vue'
 
+
 export default {
     data() {
         return {
@@ -22,18 +23,18 @@ export default {
         }
     },
     async created() {
-        this.contacts = await contactService.getContacts()
+        this.contacts = await contactService.getContacts(thi)
     },
     methods: {
         async removeContact(contactId) {
             await contactService.deleteContact(contactId)
             this.contacts = this.contacts.filter(c => c._id !== contactId)
-            console.log('contacts:', this.contacts)
             const msg = {
                 txt: `Contact ${contactId} was removed.`,
                 type: 'success',
                 timeout: 2500,
             }
+            eventBus.emit('user-msg', msg)
         },
         onSetFilterBy(filterBy) {
             this.filterBy = filterBy
@@ -47,7 +48,7 @@ export default {
     },
     components: {
         ContactList,
-        ContactFilter
+        ContactFilter,
     }
 
 }

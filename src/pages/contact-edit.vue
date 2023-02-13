@@ -9,6 +9,8 @@
 
 <script>
 import {contactService} from '@/services/contactService.js';
+import { eventBus } from '@/services/eventBus.service.js'
+
 export default {
     data() {
         return {
@@ -17,7 +19,6 @@ export default {
     },
     async created() {
         const contactId = this.$route.params._id
-        console.log('contactId:',contactId )
         if (contactId) {
             this.contact = await contactService.getContactById(contactId)
         }else{
@@ -27,6 +28,12 @@ export default {
     methods: {
         async save() {
             await contactService.saveContact(this.contact)
+            const msg = {
+                txt: `Contact was added.`,
+                type: 'success',
+                timeout: 2500,
+            }
+            eventBus.emit('user-msg', msg)
             this.$router.push('/contacts')
         }
     }
