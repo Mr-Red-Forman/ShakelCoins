@@ -25,7 +25,7 @@
 
 <script>
 import { RouterLink } from 'vue-router'
-import {userService} from '../services/userService.js'
+import {userService} from '../services/user.service.js'
 import {OhVueIcon} from "oh-vue-icons";
 
 

@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="save" v-if="contact" class="contact-edit">
+    <form @submit.prevent="onSave" v-if="contact" class="contact-edit">
         <input type="text" v-model="contact.name" placeholder="Contact name">
         <input type="tel" v-model.number="contact.phone" placeholder="+XXX-XXX-XXXXXXX">
         <input type="email" v-model.number="contact.email" placeholder="email@gmail.com">
@@ -8,8 +8,11 @@
 </template>
 
 <script>
-import {contactService} from '@/services/contact.service.js';
+import {contactService} from '@/services/contact.service.js'
 import { eventBus } from '@/services/eventBus.service.js'
+
+import { mapActions, mapGetters } from 'vuex'
+
 
 export default {
     data() {
@@ -19,23 +22,16 @@ export default {
     },
     async created() {
         const contactId = this.$route.params._id
-        if (contactId) {
-            this.contact = await contactService.getContactById(contactId)
-        }else{
-            this.contact= contactService.getEmptyContact()
-        }
+       this.contact= await this.updateContact({contactId})
     },
     methods: {
-        async save() {
-            await contactService.saveContact(this.contact)
-            const msg = {
-                txt: `Contact was added.`,
-                type: 'success',
-                timeout: 2500,
-            }
-            eventBus.emit('user-msg', msg)
-            this.$router.push('/contacts')
-        }
+        ...mapActions(['saveContact']),
+        ...mapActions(['updateContact']),
+
+        onSave(){
+            this.saveContact({contact:this.contact}) 
+            this.$router.push('/contacts') 
+        },
     }
 }
 </script>

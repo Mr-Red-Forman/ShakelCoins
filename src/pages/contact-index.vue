@@ -1,55 +1,50 @@
 <template>
     <section>
         <ContactFilter @filter="onSetFilterBy" />
-        <ContactList v-if="contacts" :contacts="contacts" @remove="removeContact" />
+        <ContactList v-if="contacts" :contacts="contacts" @remove="onRemoveContact" />
         <RouterLink to="/contacts/edit/"><button>Add a contact</button></RouterLink>
     </section>
 </template>
 
 <script>
-import { contactService } from '@/services/contact.service.js'
-import { eventBus } from '@/services/eventBus.service.js'
-
 
 import ContactList from '.././cmps/contact-list.vue'
 import ContactFilter from '.././cmps/contact-filter.vue'
+
+import { mapActions, mapGetters } from 'vuex'
+
 
 
 export default {
     data() {
         return {
-            contacts: null,
             filterBy: {}
         }
     },
     async created() {
-        this.loadContacts()
+        // this.$store.dispatch({type:'loadContacts'})
+        this.loadContacts(this.filterBy)
+
+    },
+    mounted() {
 
     },
     methods: {
-        async loadContacts() {
-            this.contacts= await contactService.getContacts(this.filterBy)
-        },
-        async removeContact(contactId) {
-            await contactService.deleteContact(contactId)
-            this.contacts = this.contacts.filter(c => c._id !== contactId)
-            const msg = {
-                txt: `Contact ${contactId} was removed.`,
-                type: 'success',
-                timeout: 2500,
-            }
-            eventBus.emit('user-msg', msg)
+        ...mapActions(['removeContact']),
+        ...mapActions(['loadContacts']),
+
+        onRemoveContact(contactId){
+            this.removeContact({contactId})
         },
         onSetFilterBy(filterBy) {
             this.filterBy = filterBy
-            this.loadContacts()
+            // this.loadContacts({filterBy:this.filterBy})
         },
     },
     computed: {
-        // filteredItems() {
-        //     const regex = new RegExp(this.filterBy.txt, 'i')
-        //     return this.contacts.filter(c => regex.test(c.name))
-        // },
+        ...mapGetters({contacts:'getAllContacts'})
+        // contacts() { return this.$store.getters.getAllContacts },
+
     },
     components: {
         ContactList,

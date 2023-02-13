@@ -15,7 +15,7 @@ export default {
         }
     },
     created() {
-        this.unListen = eventBus.on('user-msg', this.showMsg)
+        this.unListen = eventBus.on('show-msg', this.showMsg)
     },
     unmounted() {
         this.unListen()

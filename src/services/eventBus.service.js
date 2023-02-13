@@ -1,9 +1,9 @@
 'use strict'
+export const SHOW_MSG = 'show-msg'
 
 function createEventEmitter(defaultHandler = null){
     const listenersMap = {}
     const defHandler = defaultHandler
-
     return {
         on(evName, listener){
             listenersMap[evName] = listenersMap[evName] ? [ ...listenersMap[evName], listener ] : [ listener ]
@@ -16,3 +16,17 @@ function createEventEmitter(defaultHandler = null){
     }
 }
 export const eventBus = createEventEmitter(() => console.log('No handler found...'))
+
+export function showUserMsg(msg) {
+    eventBus.emit(SHOW_MSG, msg)
+}
+
+export function showSuccessMsg(txt) {
+    showUserMsg({txt, type: 'success'})
+    // showUserMsg(txt)
+}
+export function showErrorMsg(txt) {
+    showUserMsg({txt, type: 'error'})
+}
+
+window.showUserMsg = showUserMsg
