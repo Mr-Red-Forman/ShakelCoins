@@ -1,0 +1,16 @@
+.modal{
+    position: fixed;
+    inset: 0 0 0 0;
+    width: 100vw;
+    height: 100vh;
+    background-color:rgba(198, 194, 194, 0.152);
+    @include flex-center;
+
+    .loginSignOut{
+        background-color:rgba(198, 194, 194, 0.855);
+        padding: 2rem;
+        // z-index: 5;
+    }
+    
+
+}
