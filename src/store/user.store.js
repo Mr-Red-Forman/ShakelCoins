@@ -6,7 +6,7 @@ export const userStore = {
     state: {
         user: null,
         loginModalOpen: false,
-        transactionModalOpen: true
+        transactionModalOpen: false
     },
     getters: {
         getLoginUser: state => state.user,
