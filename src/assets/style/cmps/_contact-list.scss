@@ -1,7 +1,12 @@
 .contact-list{
     display: grid;
     grid-template-columns:  repeat(auto-fit,minmax(100px, 200px));
-    gap:10px
+    gap:1em;
+    justify-content: center;
+
+    .contact-actions{
+      @include flex-center;
+    }
 }
 .list-move, /* apply transition to moving elements */
 .list-enter-active,

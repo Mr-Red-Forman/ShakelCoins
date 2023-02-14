@@ -16,10 +16,13 @@
 
 // Components
 @import 'cmps/app-header';
-@import 'cmps/_user-msg.scss';
-@import 'cmps/_contact_list.scss';
+@import 'cmps/user-msg';
+@import 'cmps/contact-list';
+@import 'cmps/contact-preview';
+@import 'cmps/_contact-filter.scss';
 
 // Pages
+@import 'page/details.scss';
 
 
 

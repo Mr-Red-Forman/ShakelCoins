@@ -23,7 +23,7 @@ export const userStore={
         }
     },
     actions: {
-        async login({ commit }, {user}) {
+        async login({ commit }) {
             try{
                 const user=userService.getUser()
                 commit('setCurrUser',user)

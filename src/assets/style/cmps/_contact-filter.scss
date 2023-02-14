@@ -1,0 +1,28 @@
+.contact-filter{
+    @include flex-center;
+    .search-bar{
+        background-color: $clr3;
+        @include flex-center;
+        padding: 10px 15px;
+        border-radius: 10px;
+        margin-bottom: 2em;
+
+    }
+    input{
+        margin-right: 5px;
+        border:none;
+        padding: 2px;
+        font-size: 1em;
+    }
+    .search-icon{
+        cursor: pointer;
+        // fill:$clr3 ;
+        // background-color:rgb(220, 216, 216) ;
+        @include flex-center;
+        border-radius: 100vw;
+        height: 25px;
+        width: 25px;
+        
+    }
+
+}

@@ -5,6 +5,10 @@
         <input type="email" v-model.number="contact.email" placeholder="email@gmail.com">
         <button>Save</button>
     </form>
+    <RouterLink class="goBackBtn" to="/contacts">
+        <button>Back</button>
+    </RouterLink>
+
 </template>
 
 <script>

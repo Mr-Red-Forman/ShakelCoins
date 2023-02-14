@@ -1,0 +1,7 @@
+.contact-preview{
+    list-style-type: none;
+    h3{
+        @include flex-center;
+    }
+
+}

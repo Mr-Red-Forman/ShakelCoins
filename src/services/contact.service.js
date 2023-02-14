@@ -1,3 +1,5 @@
+import { storageService } from './storage.service.js';
+
 export const contactService = {
     getContacts,
     getContactById,
@@ -141,47 +143,54 @@ function sort(arr) {
 
 function getContacts(filterBy = null) {
     return new Promise((resolve, reject) => {
-        var contactsToReturn = contacts;
+        var contactsToReturn = storageService.load('contacts')?.length > 0 ? storageService.load('contacts') : contacts;
         if (filterBy && filterBy.term) {
             contactsToReturn = filter(filterBy.term)
         }
+        storageService.save('contacts', contactsToReturn)
         resolve(sort(contactsToReturn))
     })
 }
 
 function getContactById(id) {
     return new Promise((resolve, reject) => {
-        const contact = contacts.find(contact => contact._id === id)
+        const contactsFromData = storageService.load('contacts')
+        const contact = contactsFromData.find(contact => contact._id === id)
         contact ? resolve(contact) : reject(`Contact id ${id} not found!`)
     })
 }
 
 function deleteContact(id) {
     return new Promise((resolve, reject) => {
-        const index = contacts.findIndex(contact => contact._id === id)
+        const contactsFromData = storageService.load('contacts')
+        const index = contactsFromData.findIndex(contact => contact._id === id)
         if (index !== -1) {
-            contacts.splice(index, 1)
+            contactsFromData.splice(index, 1)
         }
-
-        resolve(contacts)
+        storageService.save('contacts', contactsFromData)
+        resolve(contactsFromData)
     })
 }
 
 function _updateContact(contact) {
     return new Promise((resolve, reject) => {
-        const index = contacts.findIndex(c => contact._id === c._id)
+        const contactsFromData = storageService.load('contacts')
+        const index = contactsFromData.findIndex(c => contact._id === c._id)
         if (index !== -1) {
-            contacts[index] = contact
+            contactsFromData[index] = contact
         }
-        resolve(contact)
+        storageService.save('contacts', contactsFromData)
+        resolve(contactsFromData)
     })
 }
 
 function _addContact(contact) {
     return new Promise((resolve, reject) => {
         contact._id = _makeId()
-        contacts.push(contact)
-        resolve(contact)
+        const contactsFromData = storageService.load('contacts')
+        contactsFromData.push(contact)
+        storageService.save('contacts', contactsFromData)
+        resolve(contactsFromData)
     })
 }
 
@@ -199,10 +208,11 @@ function getEmptyContact() {
 
 function filter(term) {
     term = term.toLocaleLowerCase()
-    return contacts.filter(contact => {
-        return contact.name.toLocaleLowerCase().includes(term) ||
-            contact.phone.toLocaleLowerCase().includes(term) ||
-            contact.email.toLocaleLowerCase().includes(term)
+    const contactsFromData = storageService.load('contacts')
+    return contactsFromData.filter(contact => {
+        return contactsFromData.name.toLocaleLowerCase().includes(term) ||
+            contactsFromData.phone.toLocaleLowerCase().includes(term) ||
+            contactsFromData.email.toLocaleLowerCase().includes(term)
     })
 }
 

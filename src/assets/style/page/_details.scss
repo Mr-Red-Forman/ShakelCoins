@@ -1,0 +1,14 @@
+.contact-details{
+    .contact-info{
+        @include flex-center;
+        height: max-content;
+        img{
+            width: 20%;
+        }
+
+    }
+}
+.goBackBtn{
+display: flex;
+   justify-content:flex-end;
+}    

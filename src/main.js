@@ -4,9 +4,9 @@ import router from './router'
 import {store} from './store/index.js'
 
 import { OhVueIcon, addIcons } from "oh-vue-icons";
-import { HiSolidUserAdd  } from "oh-vue-icons/icons";
+import { HiSolidUserAdd,BiSearchHeartFill } from "oh-vue-icons/icons";
 
-addIcons(HiSolidUserAdd);
+addIcons(HiSolidUserAdd,BiSearchHeartFill);
 
 import './assets/style/main.scss'
 

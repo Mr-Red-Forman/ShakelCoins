@@ -1,8 +1,8 @@
 <template>
     <section>
         <ContactFilter @filter="onSetFilterBy" />
+        <RouterLink title="Add a new contact" to="/contacts/edit/"><button>Add a contact</button></RouterLink>
         <ContactList v-if="contacts" :contacts="contacts" @remove="onRemoveContact" />
-        <RouterLink to="/contacts/edit/"><button>Add a contact</button></RouterLink>
     </section>
 </template>
 
@@ -38,18 +38,16 @@ export default {
         },
         onSetFilterBy(filterBy) {
             this.filterBy = filterBy
-            // this.loadContacts({filterBy:this.filterBy})
+            this.loadContacts({filterBy:this.filterBy})
         },
     },
     computed: {
         ...mapGetters({contacts:'getAllContacts'})
         // contacts() { return this.$store.getters.getAllContacts },
-
     },
     components: {
         ContactList,
         ContactFilter,
     }
-
 }
 </script>

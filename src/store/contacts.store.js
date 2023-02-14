@@ -35,6 +35,7 @@ export const contactStore = {
     },
     actions: {
         async loadContacts({ commit }, { filterBy }) {
+            console.log('filterBy:', filterBy)
             try {
                 const contacts = await contactService.getContacts(filterBy)
                 commit({ type: 'setContacts', contacts })
