@@ -31,9 +31,9 @@ export default {
 <template>
   <div class="index-layout">
     <AppHeader />
-    <main>
+  
       <RouterView />
-    </main>
+   
     <AppFooter />
     <UserMsg />
   </div>

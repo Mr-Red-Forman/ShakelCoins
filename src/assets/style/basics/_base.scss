@@ -14,6 +14,7 @@ body {
     font-size: rem(16px);
     margin: 0;
     padding: 0;
+    background-color: $main-bgc;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -22,7 +23,6 @@ h1, h2, h3, h4, h5, h6 {
 
 
 section, main, footer {
-    padding: 5px;
 }
 
 img {
@@ -33,8 +33,9 @@ p {
     margin: 0 0 1em;
 }
 
-a {
+a ,a:visited, a:active{
     text-decoration: none;
+    color: inherit
 }
 a:hover {
     text-decoration: underline;

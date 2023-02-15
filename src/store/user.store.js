@@ -11,7 +11,9 @@ export const userStore = {
     getters: {
         getLoginUser: state => state.user,
         getLoginModalStatus: state => state.loginModalOpen,
-        getTransactionModalStatus: state => state.transactionModalOpen
+        getTransactionModalStatus: state => state.transactionModalOpen,
+        getUserBalance: state => state.user.balance.toLocaleString("en-US", {style:"currency", currency:"USD",maximumFractionDigits: 0})
+
     },
     mutations: {
         setCurrUser(state) {
@@ -27,6 +29,13 @@ export const userStore = {
         setOpenModal(state ,payload) {
             state.loginModalOpen = payload
         },
+        setOpenModalTransaction(state ,payload) {
+            state.transactionModalOpen = payload
+            console.log('state.transactionModalOpen:',state.transactionModalOpen ) 
+        },
+        setUserAmount(state, currAmount){
+            state.user.balance = currAmount
+        }
     },
     actions: {
         async login({ commit }) {
@@ -37,13 +46,12 @@ export const userStore = {
                 showErrorMsg('Failed to login')
             }
         },
-        async transactions({ commit }, { from, to, amount }) {
+        async transactions({ commit }, { action, contact, amount }) {
             try {
-                console.log('payload:', from)
-                console.log('to:', to)
-                console.log('amount:', amount)
+                const currAmount= await userService.addTransaction({action,contact,amount})
+                commit('setUserAmount', currAmount)
             } catch (err) {
-
+                showErrorMsg (err)
             }
         },
         async loginWithUserName({ commit }, { userName, password }) {
